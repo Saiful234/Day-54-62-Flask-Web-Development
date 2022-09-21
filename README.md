@@ -16,4 +16,18 @@ return 'Hello, World!'
 
 3. We then use the route() decorator to tell Flask what URL should trigger our function.
 
-4. The function is given a name which is also used to generate URLs for that particular function, and returns the message we want to display in the user’s browser.
+4. The function is given a name which is also used to generate URLs for that particular function, and returns the message we want to display in the user’s browser.  
+
+### Routing
+Modern web applications use meaningful URLs to help users. Users are more likely to like a page and come back if the page uses a meaningful URL they can remember and use to directly visit a page.  
+
+Use the route() decorator to bind a function to a URL.  
+
+@app.route('/')  
+def index():  
+      return 'Index Page'  
+  
+@app.route('/hello')  
+def hello():  
+      return 'Hello, World'  
+You can do more! You can make parts of the URL dynamic and attach multiple rules to a function.
