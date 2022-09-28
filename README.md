@@ -31,3 +31,18 @@ def index():
 def hello():  
       return 'Hello, World'  
 You can do more! You can make parts of the URL dynamic and attach multiple rules to a function.
+
+### URL Building
+To build a URL to a specific function, use the url_for() function. It accepts the name of the function as its first argument and any number of keyword arguments, each corresponding to a variable part of the URL rule. Unknown variable parts are appended to the URL as query parameters.  
+
+Why would you want to build URLs using the URL reversing function url_for() instead of hard-coding them into your templates?  
+
+1. Reversing is often more descriptive than hard-coding the URLs.  
+
+2. You can change your URLs in one go instead of needing to remember to manually change hard-coded URLs.  
+
+3. URL building handles escaping of special characters transparently.  
+
+4. The generated paths are always absolute, avoiding unexpected behavior of relative paths in browsers.  
+
+5. If your application is placed outside the URL root, for example, in /myapplication instead of /, url_for() properly handles that for you.  
