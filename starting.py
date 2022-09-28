@@ -5,8 +5,7 @@ app = Flask(__name__)
 @app.route('/')
 def hello_world():
     return '<h1 style="text-align: center">Hello, World!</h1>' \
-           '<img scr="https://media.giphy.com/media/coxQHKASG60HrHtvkt/giphy.gif"><p>This is a sample page</p>'
-
+           '<img src="{{url_for("static", filename="C:\Users\niyas\Pictures\giphy.gif")}}"/>'
 @app.route('/bye')
 def bye():
     return "<h2>Bye</h2>"
@@ -21,3 +20,5 @@ def post(post_id):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+    # '<img src="{{ url_for("brid", val=val) }}" alt="Image Placeholder"  height="400" lows-rc="https://media.giphy.com/media/ByzzQxTAVOSn8JASBz/giphy.gif">'
