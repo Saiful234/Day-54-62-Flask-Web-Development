@@ -6,9 +6,16 @@ app = Flask(__name__)
 def hello_world():
     return '<h1 style="text-align: center">Hello, World!</h1>' \
            '<img src="{{url_for("static", filename="C:\Users\niyas\Pictures\giphy.gif")}}"/>'
+
+
+def make_bold(args):
+    return "<b>bye</b>"
+def make_emphasis():
+
 @app.route('/bye')
+@make_bold
 def bye():
-    return "<h2>Bye</h2>"
+    return "Bye"
 
 @app.route("/username/<name>")
 def greet(name):
