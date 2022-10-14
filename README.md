@@ -46,3 +46,15 @@ Why would you want to build URLs using the URL reversing function url_for() inst
 4. The generated paths are always absolute, avoiding unexpected behavior of relative paths in browsers.  
 
 5. If your application is placed outside the URL root, for example, in /myapplication instead of /, url_for() properly handles that for you.  
+
+### HTTP Methods
+Web applications use different HTTP methods when accessing URLs. You should familiarize yourself with the HTTP methods as you work with Flask. By default, a route only answers to GET requests. You can use the methods argument of the route() decorator to handle different HTTP methods.
+
+from flask import request  
+
+@app.route('/login', methods=['GET', 'POST'])  
+def login():  
+    if request.method == 'POST':  
+        return do_the_login()  
+    else:  
+        return show_the_login_form()
