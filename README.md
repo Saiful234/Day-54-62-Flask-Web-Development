@@ -68,3 +68,17 @@ The file has to be stored on the filesystem as static/style.css.
 
 ### Accessing Request Data
 For web applications it’s crucial to react to the data a client sends to the server. In Flask this information is provided by the global request object. If you have some experience with Python you might be wondering how that object can be global and how Flask manages to still be threadsafe. The answer is context locals:
+
+### File Uploads
+You can handle uploaded files with Flask easily. Just make sure not to forget to set the enctype="multipart/form-data" attribute on your HTML form, otherwise the browser will not transmit your files at all.  
+
+Uploaded files are stored in memory or at a temporary location on the filesystem. You can access those files by looking at the files attribute on the request object. Each uploaded file is stored in that dictionary. It behaves just like a standard Python file object, but it also has a save() method that allows you to store that file on the filesystem of the server. Here is a simple example showing how that works:  
+
+from flask import request  
+  
+@app.route('/upload', methods=['GET', 'POST'])  
+def upload_file():  
+    if request.method == 'POST':  
+        f = request.files['the_file']  
+        f.save('/var/www/uploads/uploaded_file.txt')  
+    ...
