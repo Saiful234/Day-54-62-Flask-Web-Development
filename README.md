@@ -82,3 +82,26 @@ def upload_file():
         f = request.files['the_file']  
         f.save('/var/www/uploads/uploaded_file.txt')  
     ...
+    
+### Cookies
+To access cookies you can use the cookies attribute. To set cookies you can use the set_cookie method of response objects. The cookies attribute of request objects is a dictionary with all the cookies the client transmits. If you want to use sessions, do not use the cookies directly but instead use the Sessions in Flask that add some security on top of cookies for you.
+
+#### Reading cookies:
+
+from flask import request  
+ 
+@app.route('/')  
+def index():  
+    username = request.cookies.get('username')  
+    # use cookies.get(key) instead of cookies[key] to not get a  
+    # KeyError if the cookie is missing.  
+    
+#### Storing cookies:  
+
+from flask import make_response  
+
+@app.route('/')  
+def index():  
+    resp = make_response(render_template(...))  
+    resp.set_cookie('username', 'the username')  
+    return resp  
